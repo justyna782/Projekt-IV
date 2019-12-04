@@ -1,0 +1,25 @@
+{
+  "name": "projekt-iv",
+  "version": "1.0.0",
+  "description": "Projekt IV",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justyna782/Projekt-IV.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justyna782/Projekt-IV/issues"
+  },
+  "homepage": "https://github.com/justyna782/Projekt-IV#readme",
+  "devDependencies": {
+    "webpack": "^4.41.2"
+  }
+}
