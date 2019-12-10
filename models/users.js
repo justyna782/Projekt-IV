@@ -9,7 +9,7 @@ const User = new mongoose.model('User', new mongoose.Schema({
     user_password: {
         type: String,
         required: true,
-        minlength: 6
+        match: /^(?=.*\d)(?=.*\W)|(?=.*[_]).{6,100}$/
         // jedna cyfra, jeden znak specjalny
     },
     user_email: {
@@ -23,7 +23,9 @@ const User = new mongoose.model('User', new mongoose.Schema({
 function validateUser(user) {
     const schema = {
         user_name: Joi.string().min(3).required(),
-        user_password: Joi.string().min(6).required(),
+        user_password: Joi.string()
+        .required()
+        .pattern(/^(?=.*\d)(?=.*\W)|(?=.*[_]).{6,100}$/) , // cyfra, specjalny znak, od 6 do 100 znaków
         user_email: Joi.string().min(5).required().email()
     };
 
