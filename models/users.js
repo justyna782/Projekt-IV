@@ -1,0 +1,35 @@
+const Joi = require('joi');
+const mongoose = require('mongoose');
+
+const User = new mongoose.model('User', new mongoose.Schema({
+    user_id: {
+        type: Integer,
+        required: true
+    },
+    user_name: {
+        type: String,
+        required: true
+    },
+    user_password: {
+        type: String,
+        required: true,
+        minlength: 6
+        // jedna cyfra, jeden znak specjalny
+    },
+    user_email: {
+        type: String,
+        required: true
+        // poprawnosc adresu => @ 
+    }
+}));
+
+function validateUser(user) {
+    const schema = {
+        user_password: Joi.string().min(6).required()
+    };
+  
+    return Joi.validate(user, schema);
+  }
+
+exports.User=User;
+exports.validate = validateUser;
