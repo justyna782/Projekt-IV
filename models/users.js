@@ -15,8 +15,9 @@ const User = new mongoose.model('User', new mongoose.Schema({
     user_email: {
         type: String,
         required: true,
-        unique: true
-        // poprawnosc adresu => @ 
+        unique: true,
+        match: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        // poprawnosc adresu e-mail
     }
 }));
 
