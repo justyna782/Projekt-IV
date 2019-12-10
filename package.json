@@ -21,7 +21,9 @@
   "homepage": "https://github.com/justyna782/Projekt-IV#readme",
   "devDependencies": {
     "webpack": "^4.41.2"
-    "express": "^4.17.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
     "mongoose": "^5.8.0"
   }
 }
