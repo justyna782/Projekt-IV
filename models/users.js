@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const User = new mongoose.model('User', new mongoose.Schema({
     user_id: {
-        type: Integer,
+        type: Number,
         required: true
     },
     user_name: {
