@@ -23,7 +23,7 @@ if (!user) return res.status(400).send('Invalid email or password.');
 const validPassword = bcrypt.compare(req.body.password, user.user_password);
 if(!validPassword) return res.status(400).send('Invalid password.');
 
-const token = jwt.sign({_id: user.user_id},config.get('jwtPrivateKey'));
+const token = jwt.sign({_id: user._id},config.get('jwtPrivateKey'));
 res.send(token);
 });
 

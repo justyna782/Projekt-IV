@@ -19,19 +19,14 @@ router.post('/', async(req, res)=>{
 let user = await User.findOne({user_email: req.body.user_email});
 if (user) return res.status(400).send('User already registered.');
 
-        user = new User({
-        user_id: user.length+1,
-        user_name: req.body.user_name,
-        user_password: req.body.user_password,
-        user_email: req.body.user_email
-    });
+        user = new User(_.pick(req.body,['user_name','user_password','user_email']));
 
     const salt = await bcrypt.genSalt(10);
     user.user_password = await bcrypt.hash(user.user_password, salt);
     await user.save();    
     
     const token = jwt.sign({_id: user.user_id},config.get('jwtPrivateKey'));
-    res.header('x-auth-token',token).send( _.pick(user, ['user_id','user_name','user_email']));
+    res.header('x-auth-token',token).send( _.pick(user, ['_id','user_name','user_email']));
 });
 
 
