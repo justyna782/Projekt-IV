@@ -27,4 +27,4 @@ const Task = new mongoose.model('Task', new mongoose.Schema({
     }
 }));
 
-exports.Task=Task;
+exports.Task = Task;

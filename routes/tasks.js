@@ -1,4 +1,4 @@
-const Task = require('../models/tasks')
+const {Task} = require('../models/tasks')
 const mongoose = require('mongoose');
 const express=require('express');
 const router = express.Router();
