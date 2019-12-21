@@ -26,7 +26,7 @@ const Task = new mongoose.model('Task', new mongoose.Schema({
     }
 }));
 
-function validateTask(task) {
+function validateTaskCreate(task) {
     const schema = {
         task_done: Joi.boolean(),
         task_name: Joi.string().min(1).required(),
@@ -36,6 +36,17 @@ function validateTask(task) {
     return Joi.validate(task, schema);
 }
 
+function validateTaskChange(task) {
+    const schema = {
+        task_done: Joi.boolean().required(),
+        task_name: Joi.string().min(1).required(),
+        task_end_date: Joi.date().required(),
+        task_description: Joi.string()
+    };
+    return Joi.validate(task, schema);
+}
+
 
 exports.Task = Task;
-exports.validate = validateTask;
+exports.validateTaskCreate = validateTaskCreate;
+exports.validateTaskChange = validateTaskChange;
