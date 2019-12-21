@@ -1,9 +1,9 @@
-const {Task, validate} = require('../models/tasks')
-const validateObjectId = require('../middleware/validateObjectId');
 const express=require('express');
 const router = express.Router();
-const auth = require('../middleware/auth');
 
+const auth = require('../middleware/auth');
+const {Task, validateTaskChange, validateTaskCreate} = require('../models/tasks')
+const validateObjectId = require('../middleware/validateObjectId');
 
 router.get('/', auth, async (req, res) => {
     const tasks = await Task.find({user_id: req.user._id}).sort('task_name');
@@ -12,7 +12,7 @@ router.get('/', auth, async (req, res) => {
 
 
 router.post('/', auth,  async (req, res)=>{
-  const { error } = validate(req.body);
+  const { error } = validateTaskCreate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
     let task = new Task({
@@ -28,7 +28,7 @@ router.post('/', auth,  async (req, res)=>{
 
 
 router.put('/:id', [auth, validateObjectId], async (req, res) => {
-  const { error } = validate(req.body);
+  const { error } = validateTaskChange(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   
   const task = await Task.findByIdAndUpdate(req.params.id,
