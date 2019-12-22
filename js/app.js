@@ -28,6 +28,11 @@ if(data){
     id = 0;
 }
 
+// get task from database and display it on the screen
+function showTask(task) {
+    addToDo(task.task_name, task.id, task.task_done, false);
+}
+
 // load items to the user's interface
 function loadList(array){
     array.forEach(function(item){
@@ -140,7 +145,7 @@ list.addEventListener("click", function(event){
     localStorage.setItem("TODO", JSON.stringify(LIST));
 });
 
-
+export { showTask }
 
 
 

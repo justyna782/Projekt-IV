@@ -1,3 +1,4 @@
+import { showTask } from './app.js';
 
 function createTask(newTask) {
     const url = 'http://localhost:3000/api/tasks';
@@ -19,4 +20,17 @@ function createTask(newTask) {
         .catch(err => console.log(err.message));
 }
 
-export { createTask }
+function readTasks() {
+    const url = 'http://localhost:3000/api/tasks';
+    fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(tasks => tasks.map(task => showTask(task)))
+        .catch(err => console.log(err.message));
+}
+
+export { createTask, readTasks }
