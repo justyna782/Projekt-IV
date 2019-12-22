@@ -1,3 +1,4 @@
+import { createTask } from './taskRequests.js';
 
 // Select the Elements
 const clear = document.querySelector(".clear");
@@ -87,6 +88,19 @@ document.addEventListener("keyup",function(even){
             // add item to localstorage ( this code must be added where the LIST array is updated)
             localStorage.setItem("TODO", JSON.stringify(LIST));
             
+            // add new task to database
+            let endDate = new Date();
+            endDate.setDate(endDate.getDate() + 2);
+
+            const newTask = {
+                done: false,
+                name: input.value,
+                endDate: endDate,
+                description: 'some task'
+            };
+
+            createTask(newTask);
+
             id++;
         }
         input.value = "";
