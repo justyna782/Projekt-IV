@@ -14,7 +14,7 @@ body{
 .header{
     width: 380px;
     height:150px;
-    background-image: url('/images/background.jpg');
+    background-image: url('../images/background.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 15px 15px 0 0;
@@ -35,6 +35,22 @@ body{
     cursor: pointer;
     text-shadow: 1px 3px 5px #000;
     transform: rotate(45deg);
+}
+.logOut{
+    width : 30px;
+    height: 30px;
+    position: absolute;
+    left:20px;
+    top: 20px;
+}
+.logOut i{
+    font-size: 30px;
+    color: #FFF;
+}
+.logOut i:hover{
+    cursor: pointer;
+    text-shadow: 1px 3px 5px #000;
+    transform: scale(1.2);
 }
 #date{
     position: absolute;
@@ -59,6 +75,54 @@ body{
     padding:0;
     margin:0;
 }
+.loginContent{
+    width:380px;
+    height: 350px;
+    max-height:350px;
+    background-color: #FFF;
+    overflow: auto;
+    text-align: center;
+    justify-content: center;
+}
+.loginContent::-webkit-scrollbar { 
+    display: none; 
+}
+.loginContent ul{
+    padding:0;
+    margin:0;
+}
+.loginContent input{
+   width: 350px;
+   height: 50px;
+   margin:10px;
+   border-radius: 5px;
+   border-color: rgb(224, 206, 36);
+   outline: none;
+   border-style: solid;
+   font-size: 20px;
+}
+
+.loginContent button {
+    width: 350px;
+    height: 50px;
+    margin:10px;
+    border:1px solid #dfbf30;
+    background-color: #ddbc27;
+    border-radius: 25px;
+    outline: none;
+    
+ }
+ .loginContent button:active {
+    width: 350px;
+    height: 50px;
+    margin:10px;
+    border:1px solid #dfbf30;
+    background-color: #ddbc27;
+    border-radius: 25px;
+    outline: none;
+    transform: translateY(2px);
+
+ }
 .item{
     width:380px;
     height: 45px;
