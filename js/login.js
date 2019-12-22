@@ -1,39 +1,28 @@
-
-// Select the Elements
-
 const inputLogin = document.getElementById("inputForLogin");
 const inputPassword = document.getElementById("inputForPassword");
 const loginBtn = document.getElementById("loginBtn");
 
-
-
 loginBtn.addEventListener("click", function(event){
-  console.log(inputLogin.value)
-  console.log(inputPassword.value)
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  let url = new URL("http://localhost:3000/api/auth"),
+    params = {
+      user_email: inputEmail.value,
+      user_password: inputPassword.value
+    }
+  Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
+
+  fetch(url, {
+    "method": "POST",
+    "headers": { myHeaders },
+    mode: 'no-cors'
+  })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(err => {
+      console.log(err);
     });
-// // Classes names
-// const CHECK = "fa-check-circle";
-// const UNCHECK = "fa-circle-thin";
-// const LINE_THROUGH = "lineThrough";
-
-// // Variables
-// let LIST, id;
-
-// // get item from localstorage
-// let data = localStorage.getItem("TODO");
-
-// // check if data is not empty
-// if(data){
-//     LIST = JSON.parse(data);
-//     id = LIST.length; // set the id to the last one in the list
-//     loadList(LIST); // load the list to the user interface
-// }else{
-//     // if data isn't empty
-//     LIST = [];
-//     id = 0;
-// }
-
-
+});
 
 
 
