@@ -1,4 +1,4 @@
-import { createTask, updateTask } from './taskRequests.js';
+import { createTask, updateTask, deleteTask } from './taskRequests.js';
 
 // Select the Elements
 const clear = document.querySelector(".clear");
@@ -142,6 +142,8 @@ list.addEventListener("click", function(event){
         updateTask(task.id, task.done);
     }else if(elementJob == "delete"){
         removeToDo(element);
+        // delete task from database
+        deleteTask(task.id);
     }
     
     // add item to localstorage ( this code must be added where the LIST array is updated)

@@ -50,4 +50,17 @@ function updateTask(id, isDone) {
         .catch(err => console.log(err.message));
 }
 
-export { createTask, readTasks, updateTask }
+function deleteTask(id) {
+    const url = `http://localhost:3000/api/tasks/${id}`;
+    fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(res => console.log('Task is deleted', res))
+        .catch(err => console.log(err.message));
+}
+
+export { createTask, readTasks, updateTask, deleteTask }
