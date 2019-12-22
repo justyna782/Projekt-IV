@@ -33,4 +33,21 @@ function readTasks() {
         .catch(err => console.log(err.message));
 }
 
-export { createTask, readTasks }
+function updateTask(id, isDone) {
+    const url = `http://localhost:3000/api/tasks/${id}`;
+    const taskData = {
+        task_done: isDone
+    }
+    fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(taskData)
+        })
+        .then(res => res.json())
+        .then(res => console.log('Task is updated', res))
+        .catch(err => console.log(err.message));
+}
+
+export { createTask, readTasks, updateTask }

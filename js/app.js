@@ -1,4 +1,4 @@
-import { createTask } from './taskRequests.js';
+import { createTask, updateTask } from './taskRequests.js';
 
 // Select the Elements
 const clear = document.querySelector(".clear");
@@ -134,9 +134,12 @@ function removeToDo(element){
 list.addEventListener("click", function(event){
     const element = event.target; // return the clicked element inside list
     const elementJob = element.attributes.job.value; // complete or delete
-    
+    const task = element.parentNode;
+
     if(elementJob == "complete"){
         completeToDo(element);
+        // update task in database
+        updateTask(task.id, task.done);
     }else if(elementJob == "delete"){
         removeToDo(element);
     }
