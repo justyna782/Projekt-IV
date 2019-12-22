@@ -92,8 +92,25 @@ document.addEventListener("keyup",function(even){
         input.value = "";
     }
 });
+// add an item to the list after clicking button
+document.getElementById('add').addEventListener('click', function() {
+    const toDo = document.getElementById('input').value;
+    if (toDo) {
+        addToDo(toDo, id, false, false);
+    
+        List.push({
+            name : toDo,
+            id : id,
+            done : false,
+            trash : false
+        });
 
+        localStorage.setItem("TODO", JSON.stringify(LIST));
 
+        id++;
+    }
+    input.value = "";
+});
 // complete to do
 function completeToDo(element){
     element.classList.toggle(CHECK);
@@ -109,6 +126,7 @@ function removeToDo(element){
     
     LIST[element.id].trash = true;
 }
+
 
 // target the items created dynamically
 
