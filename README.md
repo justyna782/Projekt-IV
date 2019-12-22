@@ -30,7 +30,7 @@ Rejestrująć się wymagane jest podanie nazwy użytkownika, adresu e-mail oraz 
 
 
 # Demo 
-Aplikacja po stronie klienta: http://localhost:5500/logIn.html
+Aplikacja po stronie klienta dostępna po włączeniu w programie Live Server: http://localhost:5500/logIn.html
 
 Aplikacja po stronie serwera: http://localhost:3000
 
