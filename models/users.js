@@ -25,8 +25,8 @@ function validateUser(user) {
     const schema = {
         user_name: Joi.string().min(3).required(),
         user_password: Joi.string()
-        .regex(/^(?=.*\d)(?=.*\W)|(?=.*[_]).{6,100}$/) // min 6 max 100, znak specjalny z możliwym '_' (logiczne OR po \w)
-        .required(),
+            .regex(/^(?=.*\d)(?=.*\W)|(?=.*[_]).{6,100}$/) // min 6 max 100, znak specjalny z możliwym '_' (logiczne OR po \w)
+            .required(),
         user_email: Joi.string().min(5).required().email()
     };
 

@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const Joi = require('joi');
 const bcrypt = require('bcryptjs');
 const _ = require('lodash');
-const {User} = require('../models/users');
+const { User } = require('../models/users');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    let user = await User.findOne({user_email: req.body.user_email});
+    let user = await User.findOne({ user_email: req.body.user_email });
     if (!user) return res.status(400).send('Invalid email or password.');
 
     const validPassword = await bcrypt.compare(req.body.user_password, user.user_password).catch(err => console.error(err));

@@ -2,7 +2,7 @@ const inputLogin = document.getElementById("inputForLogin");
 const inputPassword = document.getElementById("inputForPassword");
 const loginBtn = document.getElementById("loginBtn");
 
-loginBtn.addEventListener("click", function(event){
+loginBtn.addEventListener("click", function (event) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   let url = new URL("http://localhost:3000/api/auth"),
